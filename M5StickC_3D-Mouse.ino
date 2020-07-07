@@ -1,25 +1,26 @@
-#include <Arduino.h>
-#include <M5StickC.h>
-#include <BleMouse.h>
+//#include <Arduino.h> // For PlatformIO
+#include <M5StickC.h>  // https://github.com/m5stack/M5StickC 
+#include <BleMouse.h>  // https://github.com/T-vK/ESP32-BLE-Mouse
+
 BleMouse bleMouse;
-float accX = 0;
-float accY = 0;
-float accZ = 0;
 
+float accX              = 0;
+float accY              = 0;
+float accZ              = 0;
 
-boolean isActivated = true;
+int     puffer          = 0;
+int     x               = 0;
+int     y               = 0;
+int     z               = 0;
+
+boolean isActivated     = true;
 boolean buttonIsPressed = false;
-boolean tipped = false;
-boolean led = false;
+boolean tipped          = false;
+boolean led             = false;
 
-int puffer = 0;
+String  lcdText         = " ";
 
-String lcdText = " ";
-int x = 0;
-int y = 0;
-int z = 0;
-
-byte counter = 0;
+byte counter            = 0;
 
 void writeText(String _Text, int _ColorText) {
   M5.Lcd.setTextColor(BLACK);
